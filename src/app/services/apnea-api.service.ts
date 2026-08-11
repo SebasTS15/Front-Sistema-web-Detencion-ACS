@@ -4,7 +4,7 @@ import { Observable, map, tap } from 'rxjs';
 import { ApneaResult, LoginRequest, UploadMedicalRecordRequest } from '../models/medical-record.model';
 
 // Replace this host with the public URL assigned to the production API.
-const API_BASE_URL = 'http://74.220.48.0/api/v1';
+const API_BASE_URL = 'https://backend-sistema-web-detencion-acs.onrender.com/api/v1';
 const ACCESS_TOKEN_KEY = 'apnea-care.access-token';
 const LAST_RESULT_KEY = 'apnea-care.last-result';
 
