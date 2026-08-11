@@ -3,8 +3,7 @@
     <span class="tag">Acceso clínico</span>
     <h1>Inicia sesión para comenzar una evaluación</h1>
     <p>
-      Esta vista queda lista para conectar tu autenticación real. Por ahora usa respuesta simulada
-      y continúa al módulo de carga.
+      Ingresa las credenciales configuradas para el servicio de detección.
     </p>
     <a routerLink="/" class="text-link">← Volver al inicio</a>
   </article>
@@ -13,16 +12,16 @@
     <h2>Iniciar sesión</h2>
 
     <label>
-      Correo electrónico
-      <input type="email" placeholder="usuario@clinica.com" formControlName="email">
-      @if (form.controls.email.touched && form.controls.email.invalid) {
-        <small>Ingresa un correo válido.</small>
+      Usuario
+      <input type="text" autocomplete="username" placeholder="usuario" formControlName="username">
+      @if (form.controls.username.touched && form.controls.username.invalid) {
+        <small>Ingresa tu usuario.</small>
       }
     </label>
 
     <label>
       Contraseña
-      <input type="password" placeholder="••••••••" formControlName="password">
+      <input type="password" autocomplete="current-password" placeholder="••••••••" formControlName="password">
       @if (form.controls.password.touched && form.controls.password.invalid) {
         <small>La contraseña debe tener al menos 6 caracteres.</small>
       }

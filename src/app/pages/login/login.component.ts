@@ -19,7 +19,7 @@ export class LoginComponent {
   loginMessage = '';
 
   readonly form = this.fb.nonNullable.group({
-    email: ['', [Validators.required, Validators.email]],
+    username: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(6)]],
     rememberSession: [true]
   });
@@ -34,9 +34,9 @@ export class LoginComponent {
     this.loginMessage = '';
 
     this.api.login({
-      email: this.form.controls.email.value,
+      username: this.form.controls.username.value,
       password: this.form.controls.password.value
-    }).subscribe({
+    }, this.form.controls.rememberSession.value).subscribe({
       next: () => {
         this.isSubmitting = false;
         this.router.navigateByUrl('/cargar-registro');
