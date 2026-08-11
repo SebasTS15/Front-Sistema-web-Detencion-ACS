@@ -1,0 +1,128 @@
+<section class="hero section-shell">
+  <p class="eyebrow">Tus datos están seguros y protegidos</p>
+  <h1>Detección inteligente<br> de <span>Apnea Central</span></h1>
+  <p class="hero-copy">
+    Nuestra herramienta utiliza inteligencia artificial para analizar patrones fisiológicos mientras duermes
+    y estimar el riesgo de Apnea Central del Sueño.
+  </p>
+
+  <div class="hero-actions">
+    <a class="primary-btn" routerLink="/cargar-registro">Comenzar evaluación <span>→</span></a>
+    <a class="secondary-btn" href="#herramienta">Conocer más</a>
+  </div>
+
+  <div class="signal-strip" aria-label="Señales fisiológicas de referencia">
+    <article>
+      <h3>Flujo respiratorio</h3>
+      <app-ecg-line variant="flow" label="Flujo respiratorio"></app-ecg-line>
+    </article>
+    <article>
+      <h3>Oximetría (SpO₂)</h3>
+      <app-ecg-line variant="oxygen" label="Oximetría"></app-ecg-line>
+    </article>
+    <article>
+      <h3>Frecuencia cardiaca</h3>
+      <app-ecg-line variant="heart" label="Frecuencia cardiaca"></app-ecg-line>
+    </article>
+  </div>
+</section>
+
+<section id="herramienta" class="tool-section section-shell separated">
+  <div class="section-heading centered">
+    <h2>¿Qué es nuestra herramienta?</h2>
+    <p>
+      ApneaCare es una plataforma de apoyo que ayuda a identificar posibles señales de Apnea Central del Sueño
+      mediante el análisis de señales fisiológicas.
+    </p>
+  </div>
+
+  <div class="feature-grid">
+    @for (card of featureCards; track card.title) {
+      <article class="feature-card">
+        <div class="icon-bubble">{{ card.icon }}</div>
+        <h3>{{ card.title }}</h3>
+        <p>{{ card.text }}</p>
+      </article>
+    }
+  </div>
+</section>
+
+<section id="como-funciona" class="workflow section-shell separated">
+  <div class="section-heading">
+    <h2>¿Cómo funciona?</h2>
+    <p>
+      Nuestra herramienta utiliza un modelo de Deep Learning entrenado para detectar Apnea Central del Sueño
+      a partir de señales fisiológicas.
+    </p>
+  </div>
+
+  <div class="steps">
+    <article class="step-card">
+      <h3>1. Carga tu registro</h3>
+      <div class="file-illustration">
+        <span></span>
+        <app-ecg-line variant="flow"></app-ecg-line>
+      </div>
+      <p>Sube un archivo con tu registro fisiológico; por ejemplo EDF, CSV, TXT u otro formato usado por tu backend.</p>
+    </article>
+    <span class="arrow">→</span>
+    <article class="step-card">
+      <h3>2. Lectura de señales</h3>
+      <div class="mini-signals">
+        <p>Flujo respiratorio <app-ecg-line variant="flow"></app-ecg-line></p>
+        <p>Oximetría (SpO₂) <app-ecg-line variant="oxygen"></app-ecg-line></p>
+        <p>Frecuencia cardiaca <app-ecg-line variant="heart"></app-ecg-line></p>
+      </div>
+      <p>El sistema extrae y procesa las señales principales del registro.</p>
+    </article>
+    <span class="arrow">→</span>
+    <article class="step-card">
+      <h3>3. Análisis con Deep Learning</h3>
+      <div class="network" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p>Un modelo analiza patrones aprendidos en registros clínicos para estimar el riesgo.</p>
+    </article>
+    <span class="arrow">→</span>
+    <article class="step-card">
+      <h3>4. Predicción</h3>
+      <div class="result-preview">
+        <strong>Resultado:<br>Apnea Central</strong>
+        <p class="ok">✓ No detectada</p>
+        <p class="bad">× Detectada</p>
+      </div>
+      <p>El modelo entrega un resultado para orientar la revisión médica.</p>
+    </article>
+  </div>
+</section>
+
+<section id="informacion" class="info-section section-shell separated">
+  <div class="section-heading centered">
+    <h2>Información sobre la Apnea Central</h2>
+    <p>Conocer es el primer paso para cuidar tu salud.</p>
+  </div>
+
+  <div class="info-grid">
+    @for (card of infoCards; track card.title) {
+      <article class="info-card">
+        <div class="info-icon">{{ card.icon === 'lungs' ? '🫁' : card.icon }}</div>
+        <div>
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.text }}</p>
+          <a href="#">Leer más →</a>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="next-actions section-shell">
+  <article>
+    <h2>¿Listo para probar el flujo completo?</h2>
+    <p>Inicia sesión, carga un archivo médico y revisa los resultados mock mientras conectas tu backend.</p>
+  </article>
+  <div>
+    <a class="primary-btn" routerLink="/login">Iniciar sesión</a>
+    <a class="secondary-btn" routerLink="/resultados">Consultar resultados</a>
+  </div>
+</section>

@@ -1,0 +1,74 @@
+:root {
+  --blue: #0874df;
+  --navy: #061f72;
+  --text: #102a5e;
+  --line: #d8e4f5;
+  --page: #fbfdff;
+  --shadow: 0 18px 40px rgba(6, 31, 114, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 3%, rgba(8, 116, 223, 0.08), transparent 22rem),
+    radial-gradient(circle at 90% 0%, rgba(6, 31, 114, 0.05), transparent 20rem),
+    var(--page);
+  color: var(--text);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+.section-shell {
+  margin-inline: auto;
+  max-width: 1120px;
+  padding-inline: clamp(1.25rem, 5vw, 3.5rem);
+}
+
+.separated {
+  border-top: 1px solid var(--line);
+  padding-bottom: 2.5rem;
+  padding-top: 2.5rem;
+}
+
+.primary-btn,
+.secondary-btn {
+  align-items: center;
+  border-radius: 0.45rem;
+  display: inline-flex;
+  font-weight: 900;
+  gap: 0.65rem;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.9rem 1.6rem;
+  text-decoration: none;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--navy), #0a3ea6);
+  box-shadow: var(--shadow);
+  color: white;
+}
+
+.secondary-btn {
+  background: white;
+  border: 1px solid var(--navy);
+  color: var(--navy);
+}
+
+img,
+svg {
+  max-width: 100%;
+}

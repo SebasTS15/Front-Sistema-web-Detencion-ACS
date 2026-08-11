@@ -1,0 +1,44 @@
+<section class="auth-page section-shell">
+  <article class="auth-copy">
+    <span class="tag">Acceso clínico</span>
+    <h1>Inicia sesión para comenzar una evaluación</h1>
+    <p>
+      Esta vista queda lista para conectar tu autenticación real. Por ahora usa respuesta simulada
+      y continúa al módulo de carga.
+    </p>
+    <a routerLink="/" class="text-link">← Volver al inicio</a>
+  </article>
+
+  <form class="auth-card" [formGroup]="form" (ngSubmit)="submit()">
+    <h2>Iniciar sesión</h2>
+
+    <label>
+      Correo electrónico
+      <input type="email" placeholder="usuario@clinica.com" formControlName="email">
+      @if (form.controls.email.touched && form.controls.email.invalid) {
+        <small>Ingresa un correo válido.</small>
+      }
+    </label>
+
+    <label>
+      Contraseña
+      <input type="password" placeholder="••••••••" formControlName="password">
+      @if (form.controls.password.touched && form.controls.password.invalid) {
+        <small>La contraseña debe tener al menos 6 caracteres.</small>
+      }
+    </label>
+
+    <label class="check-row">
+      <input type="checkbox" formControlName="rememberSession">
+      Mantener sesión iniciada
+    </label>
+
+    @if (loginMessage) {
+      <p class="form-alert">{{ loginMessage }}</p>
+    }
+
+    <button class="primary-btn" type="submit" [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Validando...' : 'Entrar' }}
+    </button>
+  </form>
+</section>

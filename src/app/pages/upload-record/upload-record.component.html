@@ -1,0 +1,56 @@
+<section class="upload-page section-shell">
+  <div class="section-heading centered">
+    <span class="tag">Carga de registro médico</span>
+    <h1>Sube tu archivo fisiológico para análisis</h1>
+    <p>
+      El archivo puede ser EDF, CSV, TXT u otro formato médico que procese tu backend.
+      El frontend lo enviará como <strong>multipart/form-data</strong>.
+    </p>
+  </div>
+
+  <form class="upload-card" [formGroup]="form" (ngSubmit)="submit()">
+    <section class="patient-fields">
+      <label>
+        Nombre del paciente
+        <input type="text" placeholder="Ej: Juan Pérez" formControlName="patientName">
+      </label>
+      <label>
+        Identificación / Código
+        <input type="text" placeholder="Ej: MED-1024" formControlName="patientId">
+      </label>
+      <label class="full">
+        Observaciones
+        <textarea rows="4" placeholder="Notas opcionales para enviar al backend" formControlName="notes"></textarea>
+      </label>
+    </section>
+
+    <section
+      class="dropzone"
+      [class.active]="dragActive"
+      (dragover)="$event.preventDefault(); dragActive = true"
+      (dragleave)="dragActive = false"
+      (drop)="onDrop($event)"
+    >
+      <div class="file-icon">▧</div>
+      <h2>Arrastra tu archivo aquí</h2>
+      <p>o selecciona el archivo desde tu equipo.</p>
+      <input id="medical-file" type="file" (change)="onFileSelected($event)">
+      <label class="secondary-btn" for="medical-file">Seleccionar archivo</label>
+
+      @if (selectedFile) {
+        <p class="selected-file">Archivo listo: <strong>{{ selectedFile.name }}</strong></p>
+      }
+    </section>
+
+    @if (uploadMessage) {
+      <p class="form-alert">{{ uploadMessage }}</p>
+    }
+
+    <div class="form-actions">
+      <a class="secondary-btn" routerLink="/">Cancelar</a>
+      <button class="primary-btn" type="submit" [disabled]="isUploading">
+        {{ isUploading ? 'Enviando...' : 'Enviar al backend' }}
+      </button>
+    </div>
+  </form>
+</section>

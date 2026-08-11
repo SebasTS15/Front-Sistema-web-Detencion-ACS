@@ -1,0 +1,70 @@
+.brand {
+  align-items: center;
+  display: flex;
+  gap: 0.9rem;
+}
+
+.lungs {
+  height: 3.3rem;
+  position: relative;
+  width: 3.3rem;
+}
+
+.lungs::before {
+  background: var(--blue);
+  border-radius: 999px;
+  content: '';
+  height: 2.65rem;
+  left: 50%;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  width: 0.28rem;
+}
+
+.lungs span {
+  background: linear-gradient(145deg, var(--blue), #083486);
+  bottom: 0.2rem;
+  height: 2.4rem;
+  position: absolute;
+  width: 1.25rem;
+}
+
+.lungs span:first-child {
+  border-radius: 1.2rem 0.35rem 1.1rem 1.2rem;
+  left: 0.22rem;
+  transform: rotate(7deg);
+}
+
+.lungs span:last-child {
+  border-radius: 0.35rem 1.2rem 1.2rem 1.1rem;
+  right: 0.22rem;
+  transform: rotate(-7deg);
+}
+
+strong {
+  color: var(--navy);
+  display: block;
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+small {
+  color: var(--navy);
+  display: block;
+  font-size: 0.78rem;
+  margin-top: 0.35rem;
+}
+
+.small .lungs {
+  height: 2.7rem;
+  width: 2.7rem;
+}
+
+.small strong {
+  font-size: 1.45rem;
+}
+
+.small small {
+  font-size: 0.68rem;
+}

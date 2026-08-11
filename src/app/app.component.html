@@ -1,0 +1,46 @@
+<header class="site-header">
+  <a class="brand-link" routerLink="/" aria-label="Ir al inicio">
+    <app-brand-logo></app-brand-logo>
+  </a>
+
+  <nav class="main-nav" aria-label="Navegación principal">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+    <a routerLink="/" fragment="como-funciona">¿Cómo funciona?</a>
+    <a routerLink="/" fragment="informacion">Información</a>
+    <a routerLink="/" fragment="sobre-nosotros">Sobre nosotros</a>
+    <a routerLink="/login" routerLinkActive="active">Iniciar sesión</a>
+  </nav>
+
+  <a class="header-cta" routerLink="/cargar-registro">Comenzar evaluación</a>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer id="sobre-nosotros" class="site-footer">
+  <section class="footer-brand">
+    <app-brand-logo size="small"></app-brand-logo>
+  </section>
+
+  <section>
+    <h3>Enlaces útiles</h3>
+    <a routerLink="/" fragment="como-funciona">¿Cómo funciona?</a>
+    <a routerLink="/" fragment="informacion">Información</a>
+    <a routerLink="/resultados">Consultar resultados</a>
+  </section>
+
+  <section>
+    <h3>Sobre nosotros</h3>
+    <a href="#">Quiénes somos</a>
+    <a href="#">Política de privacidad</a>
+    <a href="#">Términos y condiciones</a>
+  </section>
+
+  <section class="support-note">
+    <span class="mini-icon">♢</span>
+    <p>Plataforma de apoyo. No reemplaza el diagnóstico médico profesional.</p>
+  </section>
+
+  <p class="copyright">© {{ currentYear }} ApneaCare. Todos los derechos reservados.</p>
+</footer>

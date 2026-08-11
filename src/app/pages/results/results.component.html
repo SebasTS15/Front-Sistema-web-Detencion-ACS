@@ -1,0 +1,94 @@
+<section class="results-page section-shell">
+  <div class="results-header">
+    <div>
+      <span class="tag">Resultados</span>
+      <h1>Consulta registros analizados</h1>
+      <p>Busca por paciente, identificación o predicción. Aquí se renderiza JSON del backend con datos mock temporales.</p>
+    </div>
+    <a class="primary-btn" routerLink="/cargar-registro">Cargar nuevo archivo</a>
+  </div>
+
+  <form class="search-bar" (ngSubmit)="search()">
+    <input name="query" type="search" placeholder="Buscar resultados..." [(ngModel)]="query">
+    <button class="secondary-btn" type="submit">{{ isLoading ? 'Buscando...' : 'Consultar' }}</button>
+  </form>
+
+  <div class="results-layout">
+    <aside class="result-list" aria-label="Lista de resultados">
+      @if (results.length === 0 && !isLoading) {
+        <p class="empty">No se encontraron resultados.</p>
+      }
+
+      @for (result of results; track result.id) {
+        <button
+          type="button"
+          class="result-item"
+          [class.active]="selectedResult?.id === result.id"
+          (click)="selectResult(result)"
+        >
+          <span>{{ result.patientName }}</span>
+          <small>{{ result.patientId }} · {{ result.id }}</small>
+          <strong [class]="badgeClass(result)">{{ result.prediction }}</strong>
+        </button>
+      }
+    </aside>
+
+    <article class="result-detail">
+      @if (selectedResult) {
+        <header>
+          <div>
+            <p class="muted">Informe {{ selectedResult.id }}</p>
+            <h2>{{ selectedResult.patientName }}</h2>
+            <p>{{ selectedResult.patientId }} · {{ selectedResult.uploadedAt | date:'medium' }}</p>
+          </div>
+          <span class="risk" [class]="badgeClass(selectedResult)">{{ selectedResult.riskLevel }}</span>
+        </header>
+
+        <section class="prediction-card">
+          <div>
+            <p>Predicción</p>
+            <strong>{{ selectedResult.prediction }}</strong>
+          </div>
+          <div>
+            <p>Confianza del modelo</p>
+            <strong>{{ selectedResult.confidence }}%</strong>
+          </div>
+          <div>
+            <p>Estado</p>
+            <strong>{{ selectedResult.status }}</strong>
+          </div>
+        </section>
+
+        <section class="signals-panel">
+          <h3>Señales procesadas</h3>
+          <div class="signal-row">
+            <span>Flujo respiratorio</span>
+            <app-ecg-line variant="flow"></app-ecg-line>
+          </div>
+          <div class="signal-row">
+            <span>Oximetría (SpO₂)</span>
+            <app-ecg-line variant="oxygen"></app-ecg-line>
+          </div>
+          <div class="signal-row">
+            <span>Frecuencia cardiaca</span>
+            <app-ecg-line variant="heart"></app-ecg-line>
+          </div>
+        </section>
+
+        <section class="recommendations">
+          <h3>Recomendaciones</h3>
+          <ul>
+            @for (recommendation of selectedResult.recommendations; track recommendation) {
+              <li>{{ recommendation }}</li>
+            }
+          </ul>
+        </section>
+      } @else {
+        <div class="empty-detail">
+          <h2>Selecciona un resultado</h2>
+          <p>Cuando tu backend responda con JSON, esta tarjeta mostrará el informe procesado.</p>
+        </div>
+      }
+    </article>
+  </div>
+</section>
