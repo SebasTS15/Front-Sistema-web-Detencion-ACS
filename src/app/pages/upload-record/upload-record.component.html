@@ -50,9 +50,9 @@
       <a class="secondary-btn" routerLink="/">Cancelar</a>
       <button class="primary-btn" type="submit" [disabled]="isUploading">
         @if (isUploading) {
-          <span class="spinner"></span> Enviando...
+          <span class="spinner"></span> Analizando...
         } @else {
-          Enviar al backend
+          Analizar archivo
         }
       </button>
     </div>

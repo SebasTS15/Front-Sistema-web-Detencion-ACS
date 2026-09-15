@@ -15,32 +15,29 @@
   border-radius: 999px;
   color: var(--blue);
   display: inline-block;
-  font-weight: 800;
-  padding: 0.55rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.45rem 0.8rem;
 }
 
 h1 {
-  color: var(--navy);
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  letter-spacing: -0.06em;
-  line-height: 1.05;
-  margin: 1rem 0 0.6rem;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  margin: 1rem 0 0.5rem;
 }
 
 p {
-  color: var(--navy);
-  line-height: 1.65;
+  line-height: 1.6;
   margin: 0;
 }
 
 .search-bar {
   background: white;
   border: 1px solid #b8c9e8;
-  border-radius: 1rem;
+  border-radius: 0.85rem;
   display: flex;
-  gap: 1rem;
-  margin: 2rem 0;
-  padding: 0.8rem;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+  padding: 0.65rem;
 }
 
 .search-bar input {
@@ -54,12 +51,11 @@ p {
 
 .search-bar button {
   border: 1px solid #b8c9e8;
-  cursor: pointer;
 }
 
 .results-layout {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.3rem;
   grid-template-columns: minmax(17rem, 23rem) 1fr;
 }
 
@@ -67,25 +63,30 @@ p {
 .result-detail {
   background: white;
   border: 1px solid #b8c9e8;
-  border-radius: 1.2rem;
+  border-radius: 1rem;
   box-shadow: var(--shadow);
 }
 
 .result-list {
   display: grid;
-  gap: 0.8rem;
-  padding: 1rem;
+  gap: 0.6rem;
+  padding: 0.8rem;
 }
 
 .result-item {
   background: #f8fbff;
   border: 1px solid #d6e3f7;
-  border-radius: 0.9rem;
+  border-radius: 0.75rem;
   cursor: pointer;
   display: grid;
-  gap: 0.35rem;
-  padding: 1rem;
+  gap: 0.3rem;
+  padding: 0.85rem;
   text-align: left;
+  transition: border-color 150ms ease;
+}
+
+.result-item:hover {
+  border-color: var(--blue);
 }
 
 .result-item.active {
@@ -95,19 +96,20 @@ p {
 
 .result-item span {
   color: var(--navy);
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .result-item small {
   color: #506896;
+  font-size: 0.8rem;
 }
 
 .result-item strong,
 .risk {
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   justify-self: start;
-  padding: 0.35rem 0.65rem;
+  padding: 0.3rem 0.6rem;
 }
 
 .danger {
@@ -126,7 +128,7 @@ p {
 }
 
 .result-detail {
-  min-height: 32rem;
+  min-height: 30rem;
   padding: 1.5rem;
 }
 
@@ -135,85 +137,91 @@ p {
   border-bottom: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
-  padding-bottom: 1.3rem;
+  padding-bottom: 1.2rem;
 }
 
 .muted {
   color: #5d7199;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 h2,
 h3 {
-  color: var(--navy);
   margin: 0;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.1rem;
 }
 
 .prediction-card {
   display: grid;
-  gap: 1rem;
+  gap: 0.8rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: 1.5rem 0;
+  margin: 1.3rem 0;
 }
 
 .prediction-card div {
   background: #f8fbff;
   border: 1px solid #d6e3f7;
-  border-radius: 0.9rem;
-  padding: 1rem;
+  border-radius: 0.75rem;
+  padding: 0.9rem;
+}
+
+.prediction-card p {
+  font-size: 0.8rem;
 }
 
 .prediction-card strong {
   color: var(--navy);
   display: block;
-  font-size: 1.4rem;
-  margin-top: 0.35rem;
+  font-size: 1.2rem;
+  margin-top: 0.3rem;
 }
 
 .signals-panel,
 .recommendations {
   border-top: 1px solid var(--line);
-  padding-top: 1.3rem;
+  padding-top: 1.2rem;
 }
 
 .signals-panel {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.6rem;
 }
 
 .signal-row {
   align-items: center;
   background: #f8fbff;
   border: 1px solid #d6e3f7;
-  border-radius: 0.75rem;
+  border-radius: 0.65rem;
   display: grid;
-  gap: 1rem;
+  gap: 0.8rem;
   grid-template-columns: 10rem 1fr;
-  padding: 0.7rem 1rem;
+  padding: 0.6rem 0.9rem;
 }
 
 .signal-row span {
   color: var(--navy);
-  font-weight: 800;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .recommendations {
-  margin-top: 1.4rem;
+  margin-top: 1.2rem;
 }
 
 .recommendations ul {
-  color: var(--navy);
   line-height: 1.8;
   margin-bottom: 0;
 }
 
 .empty,
 .empty-detail {
-  color: var(--navy);
   padding: 2rem;
   text-align: center;
 }
@@ -222,26 +230,24 @@ h2 {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.7rem;
   padding: 2rem 1rem;
   text-align: center;
 }
 
 .empty-state svg {
-  height: 8rem;
-  width: 8rem;
+  height: 7rem;
+  width: 7rem;
 }
 
 .empty-state h3 {
-  color: var(--navy);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 0;
 }
 
 .empty-state p {
   color: #5d7199;
   font-size: 0.9rem;
-  margin: 0;
 }
 
 .empty-state .primary-btn {

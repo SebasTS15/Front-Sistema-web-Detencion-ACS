@@ -1,12 +1,12 @@
 .site-header {
   align-items: center;
   backdrop-filter: blur(16px);
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   border-bottom: 1px solid var(--line);
   display: flex;
   gap: 2rem;
   justify-content: space-between;
-  padding: 1.25rem clamp(1.25rem, 5vw, 4.5rem);
+  padding: 1rem clamp(1.25rem, 5vw, 4.5rem);
   position: sticky;
   top: 0;
   z-index: 20;
@@ -20,8 +20,8 @@
 .main-nav {
   align-items: center;
   display: flex;
-  gap: clamp(1rem, 3vw, 2.4rem);
-  font-size: 0.95rem;
+  gap: clamp(1rem, 3vw, 2.2rem);
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
@@ -58,18 +58,23 @@
 }
 
 .header-cta {
-  border-radius: 0.45rem;
-  box-shadow: var(--shadow);
+  border-radius: var(--radius);
   color: white;
   cursor: pointer;
-  font-weight: 800;
-  padding: 1rem 1.6rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.65rem 1.3rem;
   text-decoration: none;
+  transition: opacity 150ms ease;
   white-space: nowrap;
 }
 
+.header-cta:hover {
+  opacity: 0.85;
+}
+
 .header-cta.primary {
-  background: linear-gradient(135deg, var(--navy), #0a3ea6);
+  background: var(--navy);
 }
 
 .header-cta.secondary {
@@ -79,28 +84,24 @@
   color: var(--navy);
 }
 
-.header-cta.secondary:hover {
-  background: #f0f4fa;
-}
-
 .site-footer {
   border-top: 1px solid var(--line);
   display: grid;
-  gap: 2rem;
+  gap: 1.8rem;
   grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  padding: 2rem clamp(1.25rem, 6vw, 5rem) 1.4rem;
+  padding: 2rem clamp(1.25rem, 6vw, 5rem) 1.2rem;
 }
 
 .site-footer h3 {
-  font-size: 0.95rem;
-  margin: 0 0 0.7rem;
+  font-size: 0.9rem;
+  margin: 0 0 0.6rem;
 }
 
 .site-footer a,
 .site-footer p {
   color: var(--navy);
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 1.7;
   margin: 0;
   text-decoration: none;
