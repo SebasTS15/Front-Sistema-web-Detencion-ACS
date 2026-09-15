@@ -133,6 +133,20 @@ button:disabled {
   opacity: 0.75;
 }
 
+.spinner {
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  height: 1.1rem;
+  width: 1.1rem;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 @media (max-width: 720px) {
   .patient-fields {
     grid-template-columns: 1fr;

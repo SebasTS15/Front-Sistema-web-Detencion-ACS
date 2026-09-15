@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ApneaApiService } from '../../services/apnea-api.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent {
   private readonly fb = inject(FormBuilder);
   private readonly api = inject(ApneaApiService);
   private readonly router = inject(Router);
+  private readonly toast = inject(ToastService);
 
   isSubmitting = false;
   loginMessage = '';
@@ -39,11 +41,12 @@ export class LoginComponent {
     }, this.form.controls.rememberSession.value).subscribe({
       next: () => {
         this.isSubmitting = false;
+        this.toast.show('Sesión iniciada correctamente', 'success');
         this.router.navigateByUrl('/cargar-registro');
       },
       error: () => {
         this.isSubmitting = false;
-        this.loginMessage = 'No fue posible iniciar sesión. Revisa tus credenciales o endpoint.';
+        this.loginMessage = 'No fue posible iniciar sesión. Revisa tus credenciales.';
       }
     });
   }

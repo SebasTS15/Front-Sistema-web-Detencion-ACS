@@ -16,7 +16,21 @@
   <div class="results-layout">
     <aside class="result-list" aria-label="Lista de resultados">
       @if (results.length === 0 && !isLoading) {
-        <p class="empty">No se encontraron resultados.</p>
+        <div class="empty-state">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="60" cy="60" r="56" stroke="#d8e4f5" stroke-width="2" stroke-dasharray="6 4"/>
+            <rect x="30" y="35" width="60" height="50" rx="6" stroke="#b8c9e8" stroke-width="2" fill="#f8fbff"/>
+            <line x1="38" y1="50" x2="82" y2="50" stroke="#d8e4f5" stroke-width="2" stroke-linecap="round"/>
+            <line x1="38" y1="60" x2="72" y2="60" stroke="#d8e4f5" stroke-width="2" stroke-linecap="round"/>
+            <line x1="38" y1="70" x2="62" y2="70" stroke="#d8e4f5" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="85" cy="82" r="14" fill="white" stroke="#b8c9e8" stroke-width="2"/>
+            <line x1="80" y1="82" x2="90" y2="82" stroke="#0874df" stroke-width="2" stroke-linecap="round"/>
+            <line x1="85" y1="77" x2="85" y2="87" stroke="#0874df" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Sin resultados aún</h3>
+          <p>Cuando cargues un archivo EDF, los análisis aparecerán aquí.</p>
+          <a class="primary-btn" routerLink="/cargar-registro">Cargar primer archivo</a>
+        </div>
       }
 
       @for (result of results; track result.id) {

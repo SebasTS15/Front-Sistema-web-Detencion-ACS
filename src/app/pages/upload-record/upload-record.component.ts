@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ApneaApiService } from '../../services/apnea-api.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-upload-record',
@@ -14,6 +15,7 @@ export class UploadRecordComponent {
   private readonly fb = inject(FormBuilder);
   private readonly api = inject(ApneaApiService);
   private readonly router = inject(Router);
+  private readonly toast = inject(ToastService);
 
   selectedFile: File | null = null;
   dragActive = false;
@@ -60,10 +62,12 @@ export class UploadRecordComponent {
     }).subscribe({
       next: () => {
         this.isUploading = false;
+        this.toast.show('Archivo analizado correctamente', 'success');
         this.router.navigateByUrl('/resultados');
       },
       error: () => {
         this.isUploading = false;
+        this.toast.show('Error al enviar el archivo', 'error');
         this.uploadMessage = 'No fue posible enviar el archivo. Revisa la conexión con tu backend.';
       }
     });
