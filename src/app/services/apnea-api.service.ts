@@ -23,6 +23,15 @@ export class ApneaApiService {
     );
   }
 
+  logout(): void {
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
+    sessionStorage.removeItem(ACCESS_TOKEN_KEY);
+  }
+
+  isLoggedIn(): boolean {
+    return !!(localStorage.getItem(ACCESS_TOKEN_KEY) ?? sessionStorage.getItem(ACCESS_TOKEN_KEY));
+  }
+
   uploadMedicalRecord(payload: UploadMedicalRecordRequest): Observable<ApneaResult> {
     const formData = new FormData();
     formData.append('archivo', payload.file, payload.file.name);

@@ -37,7 +37,11 @@
     }
 
     <button class="primary-btn" type="submit" [disabled]="isSubmitting">
-      {{ isSubmitting ? 'Validando...' : 'Entrar' }}
+      @if (isSubmitting) {
+        <span class="spinner"></span> Validando...
+      } @else {
+        Entrar
+      }
     </button>
   </form>
 </section>

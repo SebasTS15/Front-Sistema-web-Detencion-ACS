@@ -7,9 +7,10 @@
   align-items: center;
   color: var(--navy);
   display: inline-flex;
+  font-size: 0.9rem;
   font-weight: 600;
   gap: 0.5rem;
-  margin: 0 0 1.6rem;
+  margin: 0 0 1.4rem;
 }
 
 .eyebrow::before {
@@ -18,17 +19,14 @@
   color: var(--blue);
   content: '✓';
   display: grid;
-  font-size: 0.75rem;
-  height: 1.45rem;
+  font-size: 0.7rem;
+  height: 1.35rem;
   place-items: center;
-  width: 1.45rem;
+  width: 1.35rem;
 }
 
 h1 {
-  color: var(--navy);
-  font-size: clamp(2.8rem, 6vw, 5.2rem);
-  letter-spacing: -0.06em;
-  line-height: 1.05;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
   margin: 0;
 }
 
@@ -38,9 +36,9 @@ h1 span {
 
 .hero-copy {
   color: var(--navy);
-  font-size: 1.13rem;
+  font-size: 1.05rem;
   line-height: 1.7;
-  margin: 1.3rem auto 0;
+  margin: 1.2rem auto 0;
   max-width: 46rem;
 }
 
@@ -48,16 +46,16 @@ h1 span {
 .next-actions div {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.8rem;
   justify-content: center;
-  margin-top: 1.9rem;
+  margin-top: 1.7rem;
 }
 
 .signal-strip {
   display: grid;
-  gap: 1rem;
+  gap: 0.8rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: 3.4rem auto 0;
+  margin: 3rem auto 0;
   max-width: 52rem;
 }
 
@@ -66,19 +64,19 @@ h1 span {
 .step-card,
 .info-card,
 .next-actions {
-  background: rgba(255, 255, 255, 0.82);
+  background: white;
   border: 1px solid #b8c9e8;
   border-radius: 0.75rem;
-  box-shadow: 0 15px 45px rgba(16, 72, 165, 0.06);
+  box-shadow: var(--shadow);
 }
 
 .signal-strip article {
-  padding: 1rem 1rem 0.55rem;
+  padding: 0.9rem 0.9rem 0.5rem;
   text-align: left;
 }
 
 .signal-strip h3 {
-  font-size: 0.86rem;
+  font-size: 0.85rem;
   margin: 0;
 }
 
@@ -92,90 +90,85 @@ h1 span {
 }
 
 .section-heading h2 {
-  color: var(--navy);
-  font-size: clamp(1.9rem, 3vw, 2.6rem);
-  letter-spacing: -0.04em;
-  margin: 0 0 0.6rem;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin: 0 0 0.5rem;
 }
 
 .section-heading p {
-  color: var(--navy);
   line-height: 1.6;
   margin: 0;
 }
 
 .feature-grid {
   display: grid;
-  gap: 1.6rem;
+  gap: 1.3rem;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 1.6rem;
+  margin-top: 1.4rem;
 }
 
 .feature-card {
-  padding: 2rem 1.4rem;
+  padding: 1.8rem 1.3rem;
   text-align: center;
 }
 
 .icon-bubble {
-  background: linear-gradient(145deg, var(--blue), #07409b);
-  border-radius: 1.1rem;
+  background: var(--blue);
+  border-radius: 1rem;
   color: white;
   display: grid;
-  font-size: 2.9rem;
-  height: 4.7rem;
-  margin: 0 auto 1.3rem;
+  font-size: 2.6rem;
+  height: 4.2rem;
+  margin: 0 auto 1.2rem;
   place-items: center;
-  width: 4.7rem;
+  width: 4.2rem;
 }
 
 .feature-card h3,
 .step-card h3,
 .info-card h3 {
-  color: var(--navy);
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.7rem;
 }
 
 .feature-card p,
 .step-card p,
 .info-card p {
-  color: var(--navy);
-  font-size: 0.93rem;
-  line-height: 1.65;
+  font-size: 0.9rem;
+  line-height: 1.6;
   margin: 0;
 }
 
 .steps {
   align-items: center;
   display: grid;
-  gap: 0.7rem;
+  gap: 0.6rem;
   grid-template-columns: 1fr auto 1.25fr auto 1.25fr auto 1.15fr;
-  margin-top: 2rem;
+  margin-top: 1.8rem;
 }
 
 .step-card {
-  min-height: 16rem;
-  padding: 1.25rem;
+  min-height: 15rem;
+  padding: 1.2rem;
   text-align: center;
 }
 
 .arrow {
   color: var(--navy);
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .file-illustration {
   border: 2px solid var(--blue);
   border-radius: 0.2rem;
-  height: 6rem;
+  height: 5.5rem;
   margin: 0 auto 1rem;
   padding: 0.5rem;
   position: relative;
-  width: 4.9rem;
+  width: 4.5rem;
 }
 
 .file-illustration span {
-  border-bottom: 1.6rem solid transparent;
-  border-left: 1.6rem solid #d9e8ff;
+  border-bottom: 1.4rem solid transparent;
+  border-left: 1.4rem solid #d9e8ff;
   position: absolute;
   right: 0;
   top: 0;
@@ -183,17 +176,17 @@ h1 span {
 
 .mini-signals {
   border: 1px solid #b8c9e8;
-  border-radius: 0.65rem;
+  border-radius: 0.6rem;
   margin-bottom: 1rem;
-  padding: 0.65rem;
+  padding: 0.6rem;
 }
 
 .mini-signals p {
   align-items: center;
   display: grid;
-  font-size: 0.68rem;
-  gap: 0.4rem;
-  grid-template-columns: 4.2rem 1fr;
+  font-size: 0.65rem;
+  gap: 0.35rem;
+  grid-template-columns: 4rem 1fr;
   text-align: left;
 }
 
@@ -202,9 +195,9 @@ h1 span {
 }
 
 .network {
-  height: 7rem;
+  height: 6.5rem;
   margin: 0 auto 1rem;
-  max-width: 12rem;
+  max-width: 11rem;
   position: relative;
 }
 
@@ -216,7 +209,7 @@ h1 span {
     linear-gradient(90deg, transparent 48%, var(--navy) 49%, var(--navy) 51%, transparent 52%);
   content: '';
   inset: 0;
-  opacity: 0.55;
+  opacity: 0.45;
   position: absolute;
 }
 
@@ -224,9 +217,9 @@ h1 span {
   background: #d9e8ff;
   border: 2px solid var(--blue);
   border-radius: 50%;
-  height: 1.35rem;
+  height: 1.2rem;
   position: absolute;
-  width: 1.35rem;
+  width: 1.2rem;
   z-index: 1;
 }
 
@@ -235,15 +228,15 @@ h1 span {
 .network span:nth-child(3) { left: 4rem; top: 0; }
 .network span:nth-child(4) { left: 4rem; top: 2.7rem; }
 .network span:nth-child(5) { left: 4rem; top: 5.4rem; }
-.network span:nth-child(6) { left: 8rem; top: 1rem; }
-.network span:nth-child(7) { left: 8rem; top: 4.5rem; }
-.network span:nth-child(8) { right: 0; top: 2.8rem; }
+.network span:nth-child(6) { right: 0; top: 1rem; }
+.network span:nth-child(7) { right: 0; top: 4.5rem; }
+.network span:nth-child(8) { left: 50%; top: 2.8rem; transform: translateX(-50%); }
 
 .result-preview {
   border: 1px solid #b8c9e8;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 0.9rem;
 }
 
 .result-preview strong {
@@ -252,7 +245,7 @@ h1 span {
 
 .ok {
   color: #00a651 !important;
-  margin-top: 0.7rem !important;
+  margin-top: 0.6rem !important;
 }
 
 .bad {
@@ -261,30 +254,30 @@ h1 span {
 
 .info-grid {
   display: grid;
-  gap: 1.4rem;
+  gap: 1.2rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 1.7rem;
+  margin-top: 1.5rem;
 }
 
 .info-card {
   align-items: center;
   display: grid;
-  gap: 1.3rem;
-  grid-template-columns: 5rem 1fr;
-  padding: 1.7rem;
+  gap: 1.2rem;
+  grid-template-columns: 4.5rem 1fr;
+  padding: 1.5rem;
 }
 
 .info-icon {
   color: var(--blue);
-  font-size: 4rem;
+  font-size: 3.5rem;
   text-align: center;
 }
 
 .info-card a {
   color: var(--blue);
   display: inline-block;
-  font-weight: 800;
-  margin-top: 1rem;
+  font-weight: 700;
+  margin-top: 0.8rem;
   text-decoration: none;
 }
 
@@ -293,16 +286,14 @@ h1 span {
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
-  padding: 2rem;
+  padding: 1.8rem;
 }
 
 .next-actions h2 {
-  color: var(--navy);
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.3rem;
 }
 
 .next-actions p {
-  color: var(--navy);
   margin: 0;
 }
 

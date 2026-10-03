@@ -49,7 +49,11 @@
     <div class="form-actions">
       <a class="secondary-btn" routerLink="/">Cancelar</a>
       <button class="primary-btn" type="submit" [disabled]="isUploading">
-        {{ isUploading ? 'Enviando...' : 'Enviar al backend' }}
+        @if (isUploading) {
+          <span class="spinner"></span> Analizando...
+        } @else {
+          Analizar archivo
+        }
       </button>
     </div>
   </form>
