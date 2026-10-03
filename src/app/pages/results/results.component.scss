@@ -58,9 +58,10 @@ p {
 }
 
 .results-layout {
+  align-items: start;
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: minmax(17rem, 23rem) 1fr;
+  grid-template-columns: minmax(18rem, 22rem) 1fr;
 }
 
 .result-list,
@@ -72,42 +73,91 @@ p {
 }
 
 .result-list {
-  display: grid;
-  gap: 0.8rem;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.2rem;
+}
+
+.result-list-header {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+
+  h3 {
+    color: var(--navy);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .count-badge {
+    background: #e9f2ff;
+    border-radius: 999px;
+    color: var(--blue);
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 0.15rem 0.6rem;
+  }
 }
 
 .result-item {
   background: #f8fbff;
   border: 1px solid #d6e3f7;
-  border-radius: 0.9rem;
+  border-radius: 0.85rem;
   cursor: pointer;
-  display: grid;
-  gap: 0.35rem;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
   text-align: left;
-}
+  transition: all 0.2s ease;
 
-.result-item.active {
-  border-color: var(--blue);
-  box-shadow: inset 3px 0 0 var(--blue);
-}
+  &:hover {
+    background: #f0f6ff;
+    border-color: #9cbdf8;
+  }
 
-.result-item span {
-  color: var(--navy);
-  font-weight: 900;
-}
+  &.active {
+    background: #eff5ff;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 1px var(--blue);
+  }
 
-.result-item small {
-  color: #506896;
-}
+  .item-header {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
 
-.result-item strong,
-.risk {
-  border-radius: 999px;
-  font-size: 0.78rem;
-  justify-self: start;
-  padding: 0.35rem 0.65rem;
+  .patient-name {
+    color: var(--navy);
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .item-badge {
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    white-space: nowrap;
+  }
+
+  .item-meta {
+    align-items: center;
+    color: #5d7199;
+    display: flex;
+    font-size: 0.82rem;
+    gap: 0.4rem;
+
+    .dot {
+      opacity: 0.5;
+    }
+  }
 }
 
 .danger {
@@ -123,6 +173,14 @@ p {
 .pending {
   background: #fff6d7;
   color: #8a6500;
+}
+
+.risk {
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  white-space: nowrap;
 }
 
 .result-detail {

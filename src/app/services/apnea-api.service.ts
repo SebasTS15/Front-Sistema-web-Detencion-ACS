@@ -70,7 +70,7 @@ export class ApneaApiService {
       recommendations: data.prediction
         ? ['Se detectaron patrones compatibles con apnea central.', 'Consultar con un especialista en medicina del sueno.']
         : ['No se detectaron patrones compatibles con apnea central en este registro.'],
-      signals: { respiratoryFlow: [], spo2: [], heartRate: [] }
+      signals: { airflow: [], thoracicEffort: [], abdominalEffort: [] }
     };
   }
 

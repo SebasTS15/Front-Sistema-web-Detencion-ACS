@@ -21,8 +21,11 @@ export interface ApneaResult {
   confidence: number;
   recommendations: string[];
   signals: {
-    respiratoryFlow: number[];
-    spo2: number[];
-    heartRate: number[];
+    airflow?: number[];
+    thoracicEffort?: number[];
+    abdominalEffort?: number[];
+    respiratoryFlow?: number[];
+    spo2?: number[];
+    heartRate?: number[];
   };
 }

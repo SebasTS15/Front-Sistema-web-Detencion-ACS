@@ -14,7 +14,7 @@ export class HomeComponent {
     {
       icon: '▣',
       title: 'Análisis avanzado',
-      text: 'Evaluamos patrones de frecuencia cardiaca, oxigenación y flujo respiratorio con modelos de Deep Learning.'
+      text: 'Evaluamos patrones de flujo aéreo, esfuerzo torácico y esfuerzo abdominal con modelos de Deep Learning.'
     },
     {
       icon: '✓',

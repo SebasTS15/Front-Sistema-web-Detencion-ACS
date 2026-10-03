@@ -15,6 +15,13 @@
 
   <div class="results-layout">
     <aside class="result-list" aria-label="Lista de resultados">
+      <div class="result-list-header">
+        <h3>Historial de registros</h3>
+        @if (results.length > 0) {
+          <span class="count-badge">{{ results.length }}</span>
+        }
+      </div>
+
       @if (results.length === 0 && !isLoading) {
         <p class="empty">No se encontraron resultados.</p>
       }
@@ -26,9 +33,15 @@
           [class.active]="selectedResult?.id === result.id"
           (click)="selectResult(result)"
         >
-          <span>{{ result.patientName }}</span>
-          <small>{{ result.patientId }} · {{ result.id }}</small>
-          <strong [class]="badgeClass(result)">{{ result.prediction }}</strong>
+          <div class="item-header">
+            <span class="patient-name">{{ result.patientName }}</span>
+            <strong class="item-badge" [class]="badgeClass(result)">{{ result.prediction }}</strong>
+          </div>
+          <div class="item-meta">
+            <span>{{ result.patientId }}</span>
+            <span class="dot">•</span>
+            <span>Informe #{{ result.id }}</span>
+          </div>
         </button>
       }
     </aside>
@@ -41,7 +54,7 @@
             <h2>{{ selectedResult.patientName }}</h2>
             <p>{{ selectedResult.patientId }} · {{ selectedResult.uploadedAt | date:'medium' }}</p>
           </div>
-          <span class="risk" [class]="badgeClass(selectedResult)">{{ selectedResult.riskLevel }}</span>
+          <span class="risk" [class]="badgeClass(selectedResult)">Nivel: {{ selectedResult.riskLevel }}</span>
         </header>
 
         <section class="prediction-card">
@@ -62,16 +75,16 @@
         <section class="signals-panel">
           <h3>Señales procesadas</h3>
           <div class="signal-row">
-            <span>Flujo respiratorio</span>
+            <span>Flujo aéreo</span>
             <app-ecg-line variant="flow"></app-ecg-line>
           </div>
           <div class="signal-row">
-            <span>Oximetría (SpO₂)</span>
-            <app-ecg-line variant="oxygen"></app-ecg-line>
+            <span>Esfuerzo torácico</span>
+            <app-ecg-line variant="thoracic"></app-ecg-line>
           </div>
           <div class="signal-row">
-            <span>Frecuencia cardiaca</span>
-            <app-ecg-line variant="heart"></app-ecg-line>
+            <span>Esfuerzo abdominal</span>
+            <app-ecg-line variant="abdominal"></app-ecg-line>
           </div>
         </section>
 
