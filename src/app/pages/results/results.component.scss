@@ -90,7 +90,7 @@ p {
   border-color: var(--blue);
 }
 
-&.active {
+.result-item.active {
   background: #eff5ff;
   border-color: var(--blue);
   box-shadow: 0 0 0 1px var(--blue);
