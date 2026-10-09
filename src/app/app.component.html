@@ -16,8 +16,6 @@
   <div class="header-actions">
     @if (isLoggedIn) {
       <a class="header-cta secondary" (click)="logout()">Cerrar sesión</a>
-    } @else {
-      <a class="header-cta" routerLink="/login">Iniciar sesión</a>
     }
     <a class="header-cta primary" routerLink="/cargar-registro">Comenzar evaluación</a>
   </div>

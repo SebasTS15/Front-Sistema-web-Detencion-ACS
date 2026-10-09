@@ -6,9 +6,10 @@ import { ApneaResult, LoginRequest, UploadMedicalRecordRequest } from '../models
 // Replace this host with the public URL assigned to the production API.
 const API_BASE_URL = 'https://backend-sistema-web-detencion-acs.onrender.com/api/v1';
 const ACCESS_TOKEN_KEY = 'apnea-care.access-token';
+const USER_ID_KEY = 'apnea-care.user-id';
 const LAST_RESULT_KEY = 'apnea-care.last-result';
 
-interface TokenResponse { access_token: string; token_type: string; }
+interface TokenResponse { access_token: string; token_type: string; user_id?: number; username?: string; }
 interface PredictResponse { prediccion: boolean; probabilidad: number; clase: string; resultado_id: number | null; }
 interface ApiResult { id: number; paciente_id: string | null; prediccion: boolean; probabilidad: number; clase: string; created_at: string; }
 
@@ -18,7 +19,13 @@ export class ApneaApiService {
 
   login(credentials: LoginRequest, rememberSession: boolean): Observable<void> {
     return this.http.post<TokenResponse>(`${API_BASE_URL}/auth/token`, credentials).pipe(
-      tap(({ access_token }) => this.tokenStorage(rememberSession).setItem(ACCESS_TOKEN_KEY, access_token)),
+      tap(({ access_token, user_id }) => {
+        const storage = this.tokenStorage(rememberSession);
+        storage.setItem(ACCESS_TOKEN_KEY, access_token);
+        if (user_id !== undefined) {
+          storage.setItem(USER_ID_KEY, String(user_id));
+        }
+      }),
       map(() => undefined)
     );
   }
@@ -26,10 +33,31 @@ export class ApneaApiService {
   logout(): void {
     localStorage.removeItem(ACCESS_TOKEN_KEY);
     sessionStorage.removeItem(ACCESS_TOKEN_KEY);
+    localStorage.removeItem(USER_ID_KEY);
+    sessionStorage.removeItem(USER_ID_KEY);
   }
 
   isLoggedIn(): boolean {
     return !!(localStorage.getItem(ACCESS_TOKEN_KEY) ?? sessionStorage.getItem(ACCESS_TOKEN_KEY));
+  }
+
+  getCurrentUserId(): number | null {
+    const idStr = localStorage.getItem(USER_ID_KEY) ?? sessionStorage.getItem(USER_ID_KEY);
+    if (idStr) {
+      const parsed = parseInt(idStr, 10);
+      if (!isNaN(parsed)) return parsed;
+    }
+    const token = localStorage.getItem(ACCESS_TOKEN_KEY) ?? sessionStorage.getItem(ACCESS_TOKEN_KEY);
+    if (!token) return null;
+    try {
+      const payloadBase64 = token.split('.')[1];
+      if (!payloadBase64) return null;
+      const payload = JSON.parse(atob(payloadBase64));
+      const sub = parseInt(payload.sub, 10);
+      return isNaN(sub) ? null : sub;
+    } catch {
+      return null;
+    }
   }
 
   uploadMedicalRecord(payload: UploadMedicalRecordRequest): Observable<ApneaResult> {
@@ -41,6 +69,11 @@ export class ApneaApiService {
     formData.append('guardar_resultado', 'true');
     formData.append('guardar_historial', 'true');
 
+    const currentUserId = this.getCurrentUserId();
+    if (currentUserId !== null) {
+      formData.append('usuario_id', String(currentUserId));
+    }
+
     return this.http.post<PredictResponse>(`${API_BASE_URL}/predict`, formData, { headers: this.authHeaders() }).pipe(
       map((response) => this.mapPrediction(response, payload)),
       tap((result) => localStorage.setItem(LAST_RESULT_KEY, JSON.stringify(result)))
@@ -48,6 +81,10 @@ export class ApneaApiService {
   }
 
   getResults(query = ''): Observable<ApneaResult[]> {
+    const userId = this.getCurrentUserId();
+    if (userId !== null) {
+      return this.getResultsForUser(userId, query);
+    }
     const normalizedQuery = query.trim().toLowerCase();
     const lastResult = this.getLastResult();
     return new Observable<ApneaResult[]>((subscriber) => {
@@ -104,6 +141,8 @@ export class ApneaApiService {
   private tokenStorage(rememberSession: boolean): Storage {
     const otherStorage = rememberSession ? sessionStorage : localStorage;
     otherStorage.removeItem(ACCESS_TOKEN_KEY);
+    otherStorage.removeItem(USER_ID_KEY);
     return rememberSession ? localStorage : sessionStorage;
   }
 }
+
